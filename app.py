@@ -13,8 +13,8 @@ def load_data():
     exploded_track_df = df.explode("genres")
     return exploded_track_df
 
-genre_names = ['Dance Pop', 'Electronic', 'Electropop', 'Hip Hop', 'Jazz', 'K-pop', 'Latin', 'Pop', 'Pop Rap', 'R&B', 'Rock']
-audio_feats = ["acousticness", "danceability", "energy", "instrumentalness", "valence", "tempo"]
+genre_names = ['Dance Pop', 'Electronic', 'Electropop', 'Hip Hop', 'Jazz', 'K-pop', 'Latin', 'Rock']
+audio_feats = ["acousticness", "danceability", "energy", "instrumentalness", "tempo"]
 
 exploded_track_df = load_data()
 
@@ -50,7 +50,7 @@ def page():
             st.markdown("***Choose features to customize:***")
             start_year, end_year = st.slider(
                 'Select the year range',
-                1990, 2019, (2015, 2019)
+                2000, 2019, (2015, 2019)
             )
             acousticness = st.slider(
                 'Acousticness',
@@ -64,15 +64,12 @@ def page():
             instrumentalness = st.slider(
                 'Instrumentalness',
                 0.0, 1.0, 0.0)
-            valence = st.slider(
-                'Valence',
-                0.0, 1.0, 0.45)
             tempo = st.slider(
                 'Tempo',
                 0.0, 244.0, 118.0)
 
     tracks_per_page = 6
-    test_feat = [acousticness, danceability, energy, instrumentalness, valence, tempo]
+    test_feat = [acousticness, danceability, energy, instrumentalness, tempo]
     uris, audios = n_neighbors_uri_audio(genre, start_year, end_year, test_feat)
 
     tracks = []
