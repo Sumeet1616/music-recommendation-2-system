@@ -45,7 +45,7 @@ def page():
             st.markdown("***Choose your genre:***")
             genre = st.radio(
                 "",
-                genre_names, index=genre_names.index("Pop"))
+                genre_names, index=genre_names.index(" Hip Hop"))
         with col1:
             st.markdown("***Choose features to customize:***")
             start_year, end_year = st.slider(
